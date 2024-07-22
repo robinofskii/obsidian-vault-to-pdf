@@ -34,7 +34,7 @@ You can install them using your system's package manager or by following the ins
 1. Clone the repository to your local machine.
 2. Ensure you have the required dependencies installed by running:
 
-   ```
+   ```bash
    pandoc --version
    weasyprint --version
    ```
@@ -50,7 +50,7 @@ You can install them using your system's package manager or by following the ins
 
 4. Navigate to the project directory and run the script with Python:
 
-   ```
+   ```bash
    python markdown-to-pdf.py
    ```
 
@@ -60,4 +60,4 @@ To use the script, simply run it from the command line. The script is configured
 
 You can modify the `vault_path`, `md_output_path`, `pdf_output_path`, `pdf_engine`, and `pdf_title` variables in the script to customize the input directory, intermediate Markdown file path, output PDF path, PDF engine, and PDF title, respectively.
 
-For more detailed usage instructions or to report issues, please refer to the [Contributing](../CONTRIBUTING.md) section.
+I personally use this script to export my entire Obsidian vault to a single PDF file. I then use this PDF as a source file for chatGPT to help answer questions about my notes. The script is designed to work with Obsidian vaults, but you it can to work with any directory containing Markdown files.
