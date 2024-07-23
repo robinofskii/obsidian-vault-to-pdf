@@ -1,11 +1,25 @@
 import os
 import subprocess
+import argparse
 
-vault_path = "" # Path to the directory containing markdown files (e.g., ./MyVault)
-md_output_path = "" # Path to the combined markdown file (e.g. ./combined.md)
-pdf_output_path = "" # Path to the output PDF file (e.g., ./combined.pdf)
-pdf_engine = "weasyprint" # PDF engine to use (e.g., weasyprint, wkhtmltopdf, pdflatex)
-pdf_title = "" # Title of the PDF file (e.g., My Vault)
+## Initialize argparse for command line arguments
+parser = argparse.ArgumentParser(description="Convert a directory of markdown files into a single PDF file.")
+parser.add_argument("--vault_path", type=str, help="Path to the directory containing markdown files (e.g., ./MyVault)")
+parser.add_argument("--pdf_name", type=str, help="Name of the output PDF file (e.g., combined.pdf)")
+parser.add_argument("--pdf_engine", type=str, help="PDF engine to use (e.g., weasyprint, wkhtmltopdf, pdflatex)")
+
+args = parser.parse_args()
+
+## Check if the required arguments are provided
+if not args.vault_path or not args.pdf_name:
+    parser.print_help()
+    exit(1)
+
+vault_path = parser.parse_args().vault_path
+pdf_engine = parser.parse_args().pdf_engine or "weasyprint"
+md_output_path = parser.parse_args().pdf_name + ".md"
+pdf_output_path = parser.parse_args().pdf_name + ".pdf"
+pdf_title = os.path.basename(pdf_output_path).replace(".pdf", "")
 
 def doesFileExist(filePath):
     return os.path.exists(filePath)
