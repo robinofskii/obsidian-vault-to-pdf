@@ -1,9 +1,9 @@
 import os
 import subprocess
 
-from generic_helpers import doesFileExist
+from helpers.generic_helpers import doesFileExist
 
-def generate_pdf(md_output_path, pdf_output_path, pdf_engine):
+def convertToPdf(md_output_path, pdf_output_path, pdf_engine):
     """
     Generate a PDF file from a combined markdown file.
 

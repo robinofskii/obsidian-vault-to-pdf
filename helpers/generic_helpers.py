@@ -2,9 +2,18 @@ import os
 import subprocess
 
 def doesFileExist(filePath):
+    """
+    Check if a file exists at the given file path.
+
+    Args:
+        filePath (str): The path to the file.
+
+    Returns:
+        bool: True if the file exists, False otherwise.
+    """
     return os.path.exists(filePath)
 
-def validateDependencies():
+def checkDependencies():
     """
     Checks if the required dependencies are installed.
 
