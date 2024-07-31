@@ -1,7 +1,7 @@
 import argparse
 import os
 
-from helpers.generic_helpers import checkDependencies, doesDirectoryExist
+from helpers.generic_helpers import checkDependencies
 from helpers.markdown_helpers import mergeMarkdownFiles
 from helpers.pdf_helpers import convertToPdf
 from helpers.user_input_helpers import getUserInput
