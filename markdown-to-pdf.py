@@ -25,12 +25,34 @@ def doesFileExist(filePath):
     return os.path.exists(filePath)
 
 def validateDependencies():
+    """
+    Checks if the required dependencies are installed.
+
+    This function checks if the dependencies 'pandoc' and 'weasyprint' are installed on the system.
+    If any of the dependencies are not installed, it raises an exception with an appropriate error message.
+
+    Raises:
+        Exception: If any of the dependencies are not installed.
+        
+    Returns:
+        None
+    """
     dependencies = {"pandoc": "--version", "weasyprint": "--version"}
     for dep, arg in dependencies.items():
         if subprocess.run([dep, arg], stdout=subprocess.PIPE).returncode != 0:
             raise Exception(f"{dep} is not installed. Please install it before running this script.")
 
 def combine_files(vault_path, output_path):
+    """
+    Combines all markdown files in the specified vault path into a single file.
+
+    Args:
+        vault_path (str): The path to the directory containing the markdown files.
+        output_path (str): The path to the output file where the combined markdown will be saved.
+
+    Returns:
+        None
+    """
     if doesFileExist(output_path):
         os.remove(output_path)
     with open(output_path, "w") as output:
@@ -43,6 +65,19 @@ def combine_files(vault_path, output_path):
     print(f"Markdown files combined into {output_path}")
 
 def generate_pdf(md_output_path, pdf_output_path):
+    """
+    Generate a PDF file from a combined markdown file.
+
+    Args:
+        md_output_path (str): The path to the combined markdown file.
+        pdf_output_path (str): The path to save the generated PDF file.
+
+    Raises:
+        Exception: If the combined markdown file does not exist or if there is an error creating the PDF.
+
+    Returns:
+        None
+    """
     if not doesFileExist(md_output_path):
         raise Exception("Combined markdown file does not exist.")
     if doesFileExist(pdf_output_path):
