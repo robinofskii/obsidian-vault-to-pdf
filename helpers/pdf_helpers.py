@@ -3,7 +3,7 @@ import subprocess
 
 from helpers.generic_helpers import doesFileExist
 
-def convertToPdf(md_output_path, pdf_output_path, pdf_engine):
+def convertToPdf(pdf_output_path, pdf_engine):
     """
     Generate a PDF file from a combined markdown file.
 
@@ -18,6 +18,8 @@ def convertToPdf(md_output_path, pdf_output_path, pdf_engine):
     Returns:
         None
     """
+    md_output_path = "combined_markdown.md"
+    
     if not doesFileExist(md_output_path):
         raise Exception("Combined markdown file does not exist.")
     if doesFileExist(pdf_output_path):
@@ -29,3 +31,5 @@ def convertToPdf(md_output_path, pdf_output_path, pdf_engine):
     if result.returncode != 0 or not doesFileExist(pdf_output_path):
         raise Exception("Error creating PDF")
     print(f"PDF created successfully: {pdf_output_path}")
+    print("Removing combined markdown file...")
+    os.remove(md_output_path)
