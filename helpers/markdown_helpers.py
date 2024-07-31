@@ -2,7 +2,7 @@ import os
 
 from helpers.generic_helpers import doesFileExist
 
-def mergeMarkdownFiles(vault_path, output_path, folders_to_skip=[]):
+def mergeMarkdownFiles(vault_path, folders_to_skip=[]):
     """
     Combines all markdown files in the specified vault path into a single file.
 
@@ -13,6 +13,8 @@ def mergeMarkdownFiles(vault_path, output_path, folders_to_skip=[]):
     Returns:
         None
     """
+    # Set output file path to vault folder name
+    output_path = "combined_markdown.md"
     if doesFileExist(output_path):
         os.remove(output_path)
     with open(output_path, "w") as output:
