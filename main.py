@@ -15,8 +15,8 @@ args = parser.parse_args()
 pdf_engine = args.pdf_engine or "weasyprint"
 
 try:
-    vault_path = getUserInput("Enter the Path to the directory containing markdown files (e.g., ./MyVault): ")
-    folders_to_skip = getUserInput("Enter the folders to skip (comma-separated, e.g., folder1,folder2): ").split(",") or []
+    vault_path = getUserInput("Enter the Path to the directory containing markdown files (e.g., ./MyVault):\n")
+    folders_to_skip = getUserInput("Enter the folders to skip (comma-separated, e.g., folder1,folder2):\n").split(",") or []
     # exclude .obsidian folder
     folders_to_skip.append(".obsidian")
     if not os.path.isdir(vault_path):
