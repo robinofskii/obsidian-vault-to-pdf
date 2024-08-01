@@ -19,7 +19,6 @@ def mergeMarkdownFiles(vault_path, folders_to_skip=[]):
         os.remove(output_path)
     with open(output_path, "w") as output:
         for root, dirs, files in os.walk(vault_path):
-            # Skip folders specified in the command line arguments
             dirs[:] = [d for d in dirs if d not in folders_to_skip]
             for file in files:
                 if file.endswith(".md"):
